@@ -11,6 +11,7 @@ Arquivos de evidência nesta pasta:
 | `mutation-inicial/mutation.html` | Relatório HTML da **primeira** execução (para os screenshots dos sobreviventes) |
 | `mutation-final/mutation.html` | Relatório HTML da execução final |
 | `sobreviventes-inicial.md` | Lista dos 56 mutantes não detectados na primeira execução |
+| `screenshots/` | Capturas dos relatórios HTML (inicial e final) |
 
 ---
 
@@ -30,6 +31,14 @@ Arquivos de evidência nesta pasta:
 |---|---|---|---|---|---|
 | 213 | 154 | 3 | 44 | 12 | **73,71%** (78,11% sobre o código coberto) |
 
+![Resumo do relatório inicial do Stryker: 73,71%](screenshots/1-score-inicial.png)
+
+*Figura 1: resumo da primeira execução. Em vermelho, os 44 sobreviventes; em laranja, os 12 sem cobertura.*
+
+![Código com os filtros Survived/NoCoverage/Timeout ativos](screenshots/1b-codigo-filtrado.png)
+
+*Figura 2: visão do código filtrada para os mutantes não detectados. Cada bolinha no fim da linha é um mutante (vermelho = sobreviveu, laranja = sem cobertura). Já na linha 8 aparece o mutante da mensagem de erro de `divisao`, e na linha 13 a fronteira `n < 0` de `raizQuadrada`.*
+
 ### Por que os números são tão diferentes?
 
 A cobertura mede apenas se uma linha **foi executada** durante os testes. Ela não verifica se o teste **conferiu** o resultado. O teste de mutação mede outra coisa: se a suíte **percebe** quando o código muda. Com 98,64% de linhas cobertas, mais de um quarto dos mutantes (56 de 213) passou despercebido, porque a suíte original:
@@ -41,6 +50,10 @@ A cobertura mede apenas se uma linha **foi executada** durante os testes. Ela n�
 - **Escolhia entradas que escondem o erro.** `medianaArray` era testada com um array já ordenado, então remover o `sort` não mudava nada. As conversões de temperatura usavam 0 °C ↔ 32 °F, valores em que `9/5` e `5/9` são multiplicados por zero, então trocar `*` por `/` dava o mesmo resultado. `isPrimo` só era testada com o primo 7, então apagar o corpo do laço (que é o que detecta compostos) não fazia diferença.
 
 A cobertura de **branches** (58,82%) já indicava o problema: muitos `if` nunca tinham o ramo verdadeiro executado. Mesmo assim, cobertura alta é condição necessária, mas não suficiente.
+
+![Bloco 5 do código com os mutantes não detectados](screenshots/2a-bloco5-mediana-visao-geral.png)
+
+*Figura 3: bloco 5. Os predicados `isMaiorQue`, `isMenorQue` e `isEqual` (linhas 104–106) e quase toda a `medianaArray` têm sobreviventes. A linha 112 (bolinhas laranja) é a única que a cobertura acusava como não executada; todas as outras bolinhas vermelhas estão em linhas "100% cobertas".*
 
 ---
 
@@ -54,6 +67,10 @@ A cobertura de **branches** (58,82%) já indicava o problema: muitos `if` nunca 
 ```
 
 Mutador: **MethodExpression** (#48). Na mesma linha também sobreviveram `sort(() => undefined)` (#49, ArrowFunction) e `a + b` no comparador (#50, ArithmeticOperator).
+
+![Mutante MethodExpression na linha 109](screenshots/2-mediana-sort-removido.png)
+
+*Figura 4: o Stryker mostra "Covered by 1 test (yet still survived)", ou seja, a linha foi executada por um teste, mas o teste não percebeu a remoção do `sort`.*
 
 **Por que sobreviveu:** o único teste usava `[1, 2, 3, 4, 5]`, que **já está ordenado**. Com ou sem ordenação, o elemento central é 3. A linha foi executada (por isso estava coberta), mas a ordenação nunca fez diferença no resultado.
 
@@ -77,6 +94,10 @@ Sem o `sort`, o elemento central de `[5, 1, 3]` é 1, e o teste falha. O compara
 ```
 
 Mutador: **BlockStatement** (#25). Junto com ele sobreviveram `i < n` → `false` (#23), `i < n` → `i >= n` (#24), `n % i === 0` → `false` (#26) e `n % i` → `n * i` (#27). Além disso, `return false` (#22, #28) e o `n <= 1` (#20, #21) não tinham cobertura ou sobreviviam.
+
+![Mutante EqualityOperator na linha 74](screenshots/3-isprimo-laco.png)
+
+*Figura 5: uma das mutações da mesma linha, `i < n` → `i >= n` (#24). O laço nunca executa e a função devolve `true` para todo `n > 1`, e mesmo assim o teste com `isPrimo(7)` passa. A captura mostra ainda o equivalente de `produtoArray` (linha 84) e os sobreviventes de `clamp` (linhas 88–89).*
 
 **Por que sobreviveu:** o teste só verificava `isPrimo(7) === true`. Uma função que devolve `true` para qualquer `n > 1` passa nesse teste. A lógica que identifica números compostos nunca foi exercitada.
 
@@ -102,6 +123,10 @@ test('1 não é primo [20, 21, 22]', () => {
 ```
 
 Mutador: **EqualityOperator** (#31). A versão simétrica, `valor > max` → `valor >= max`, também sobreviveu (#33).
+
+![Mutante EqualityOperator na linha 88](screenshots/4-clamp-fronteira.png)
+
+*Figura 6: `valor < min` trocado por `valor <= min`, sobrevivente na primeira execução.*
 
 **Por que sobreviveu:** o teste original só usava `clamp(5, 0, 10)`, um valor no meio do intervalo. Além disso, este mutante é **quase equivalente**. Quando `valor === min`, a função original devolve `valor` e a mutante devolve `min`, que são o mesmo número. Por isso o teste de fronteira óbvio, `clamp(0, 0, 10)`, **não** mata o mutante.
 
@@ -131,6 +156,10 @@ test('retorna o próprio valor (não o limite) quando valor === max [33]', () =>
 |---|---|---|---|---|---|
 | 213 | 205 | 3 | 5 | 0 | **97,65%** |
 
+![Resumo do relatório final do Stryker: 97,65%](screenshots/5-score-final.png)
+
+*Figura 7: resumo da execução final. Restam apenas os 5 mutantes equivalentes, e não há mais mutantes sem cobertura.*
+
 Descontando os 5 mutantes equivalentes (abaixo), o score sobre os mutantes que **podem** ser mortos é **100%** (208/208).
 
 ### Cobertura final
@@ -152,6 +181,10 @@ if (n === 0 && n === 1) return 1;             // #8 (nunca verdadeiro → igual 
 if (false || n === 1) return 1;               // #10
 if (n === 0 || false) return 1;               // #11
 ```
+
+![Linha 19 com os 4 mutantes equivalentes de fatorial](screenshots/6-equivalentes-fatorial.png)
+
+*Figura 8: as 4 bolinhas na linha 19 são os mutantes equivalentes de `fatorial`. A linha 21 tem um mutante em timeout (amarelo), que conta como detectado.*
 
 Esse `if` é apenas um atalho. Sem ele, para `n = 0` ou `n = 1`, a execução segue para `let resultado = 1; for (let i = 2; i <= n; i++)`. Como `2 <= 0` e `2 <= 1` são falsos, o laço não executa e a função devolve `resultado = 1`, exatamente o mesmo valor. Nenhuma entrada distingue as versões. O teste `fatorial(0) === 1` existe, mas por definição não consegue matar esses mutantes.
 
