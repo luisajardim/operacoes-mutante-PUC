@@ -1,0 +1,156 @@
+18:43:22 (25620) INFO ProjectReader Found 1 of 25 file(s) to be mutated.
+18:43:22 (25620) INFO Instrumenter Instrumented 1 source file(s) with 213 mutant(s)
+18:43:23 (25620) INFO ConcurrencyTokenProvider Creating 15 test runner process(es).
+18:43:24 (25620) INFO BroadcastReporter Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+18:43:26 (25620) INFO DryRunExecutor Starting initial test run (jest test runner with "perTest" coverage analysis). This may take a while.
+18:43:27 (25620) INFO DryRunExecutor Initial test run succeeded. Ran 85 tests in 1 second (net 74 ms, overhead 1392 ms).
+Mutation testing 68% (elapsed: <1m, remaining: <1m) 82/213 tested (4 survived, 1 timed out)
+
+All tests
+  operacoes.mutantes.test.js
+    ✓ Mensagens de erro e guardas de entrada inválida divisao lança a mensagem exata ao dividir por zero [1] [line 12] (killed 2)
+    ✓ Mensagens de erro e guardas de entrada inválida raizQuadrada lança a mensagem exata para número negativo [2, 4] [line 16] (killed 2)
+    ✓ Mensagens de erro e guardas de entrada inválida fatorial lança a mensagem exata para número negativo [5, 7] [line 21] (killed 3)
+    ✓ Mensagens de erro e guardas de entrada inválida maximoArray lança a mensagem exata para array vazio [13, 14] [line 25] (killed 2)
+    ✓ Mensagens de erro e guardas de entrada inválida minimoArray lança a mensagem exata para array vazio [15, 16] [line 29] (killed 2)
+    ✓ Mensagens de erro e guardas de entrada inválida inverso lança a mensagem exata para zero [39, 40] [line 33] (killed 2)
+    ✓ Mensagens de erro e guardas de entrada inválida medianaArray lança a mensagem exata para array vazio [46, 47] [line 37] (killed 4)
+    ✓ Valores na fronteira das guardas (zero não é negativo) raizQuadrada(0) retorna 0 em vez de lançar erro [3] [line 43] (killed 1)
+    ✓ Valores na fronteira das guardas (zero não é negativo) fatorial(0) retorna 1 em vez de lançar erro [6] [line 47] (killed 2)
+    ~ Valores na fronteira das guardas (zero não é negativo) fatorial(1) retorna 1 [line 51] (covered 12)
+    ✓ Arrays vazios com valor de retorno definido mediaArray de array vazio retorna 0, e não NaN [12] [line 57] (killed 1)
+    ~ Arrays vazios com valor de retorno definido produtoArray de array vazio retorna o elemento neutro 1 [line 61] (covered 4)
+    ✓ Predicados retornam false quando a condição não vale isPar retorna false para número ímpar [17] [line 67] (killed 2)
+    ✓ Predicados retornam false quando a condição não vale isImpar retorna false para número par [18, 19] [line 71] (killed 3)
+    ✓ Predicados retornam false quando a condição não vale isDivisivel retorna false quando há resto [34] [line 75] (killed 1)
+    ✓ Predicados retornam false quando a condição não vale isEqual retorna false para números diferentes [45] [line 79] (killed 3)
+    ✓ Comparações estritas: igualdade não é "maior" nem "menor" isMaiorQue retorna false quando a é menor que b [41] [line 85] (killed 2)
+    ✓ Comparações estritas: igualdade não é "maior" nem "menor" isMaiorQue retorna false quando a === b [42] [line 89] (killed 1)
+    ✓ Comparações estritas: igualdade não é "maior" nem "menor" isMenorQue retorna false quando a é maior que b [43] [line 93] (killed 2)
+    ✓ Comparações estritas: igualdade não é "maior" nem "menor" isMenorQue retorna false quando a === b [44] [line 97] (killed 1)
+    ✓ isPrimo: casos de borda e números compostos 1 não é primo [20, 21, 22] [line 103] (killed 3)
+    ~ isPrimo: casos de borda e números compostos 0 e negativos não são primos [line 107] (covered 6)
+    ✓ isPrimo: casos de borda e números compostos 2 é primo (menor primo, laço não executa) [line 112] (killed 3)
+    ✓ isPrimo: casos de borda e números compostos números compostos não são primos [23-28] [line 116] (killed 5)
+    ✓ clamp: valores fora e exatamente nos limites retorna min quando o valor está abaixo do intervalo [30] [line 124] (killed 3)
+    ✓ clamp: valores fora e exatamente nos limites retorna max quando o valor está acima do intervalo [32] [line 128] (killed 3)
+    ✓ clamp: valores fora e exatamente nos limites retorna o próprio valor (não o limite) quando valor === min [31] [line 132] (killed 2)
+    ✓ clamp: valores fora e exatamente nos limites retorna o próprio valor (não o limite) quando valor === max [33] [line 138] (killed 1)
+    ✓ Conversões de temperatura com valores fora do zero 100 °C equivalem a 212 °F [35, 36] [line 144] (killed 4)
+    ~ Conversões de temperatura com valores fora do zero -40 °C equivalem a -40 °F [line 148] (covered 4)
+    ✓ Conversões de temperatura com valores fora do zero 212 °F equivalem a 100 °C [37, 38] [line 152] (killed 4)
+    ✓ medianaArray: ordenação e quantidade par de elementos ordena antes de escolher o elemento central (array ímpar desordenado) [48-50] [line 158] (killed 7)
+    ~ medianaArray: ordenação e quantidade par de elementos não altera o array recebido [line 162] (covered 13)
+    ✓ medianaArray: ordenação e quantidade par de elementos array par retorna a média dos dois elementos centrais [51-56] [line 168] (killed 6)
+    ~ medianaArray: ordenação e quantidade par de elementos array par desordenado é ordenado antes do cálculo [line 172] (covered 17)
+  operacoes.test.js
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 1. deve somar dois números positivos [line 15] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 2. deve subtrair dois números positivos [line 16] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 3. deve multiplicar dois números positivos [line 17] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 4. deve dividir e lançar erro para divisão por zero [line 18] (killed 5)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 5. deve calcular a potência com expoente positivo [line 22] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 6. deve calcular a raiz quadrada de um quadrado perfeito [line 23] (killed 3)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 7. deve retornar o resto da divisão [line 24] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 8. deve calcular o fatorial de um número maior que 1 [line 25] (killed 9)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 9. deve calcular a média de um array com múltiplos elementos [line 26] (killed 7)
+    ~ Suíte de Testes Fraca para 50 Operações Aritméticas 10. deve somar um array com múltiplos elementos [line 27] (covered 3)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 11. deve encontrar o valor máximo em um array [line 30] (killed 4)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 12. deve encontrar o valor mínimo em um array [line 31] (killed 4)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 13. deve retornar o valor absoluto de um número negativo [line 32] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 14. deve arredondar um número para cima [line 33] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 15. deve retornar true para um número par [line 34] (killed 3)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 16. deve retornar true para um número ímpar [line 35] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 17. deve calcular uma porcentagem simples [line 36] (killed 3)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 18. deve aumentar um valor em uma porcentagem [line 37] (killed 4)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 19. deve diminuir um valor em uma porcentagem [line 38] (killed 4)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 20. deve inverter o sinal de um número positivo [line 39] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 21. deve calcular o seno de 0 [line 42] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 22. deve calcular o cosseno de 0 [line 43] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 23. deve calcular a tangente de 0 [line 44] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 24. deve calcular o logaritmo natural de Euler [line 45] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 25. deve calcular o logaritmo na base 10 [line 46] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 26. deve arredondar para baixo [line 47] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 27. deve arredondar para cima [line 48] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 28. deve calcular a hipotenusa de um triângulo retângulo [line 49] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 29. deve converter graus para radianos [line 50] (killed 3)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 30. deve converter radianos para graus [line 51] (killed 3)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 31. deve calcular o MDC de dois números [line 54] (killed 3)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 32. deve calcular o MMC de dois números [line 55] (killed 3)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 33. deve verificar que um número é primo [line 56] (killed 6)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 34. deve calcular o 10º termo de Fibonacci [line 57] (killed 8)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 35. deve calcular o produto de um array [line 58] (killed 5)
+    ~ Suíte de Testes Fraca para 50 Operações Aritméticas 36. deve manter um valor dentro de um intervalo (clamp) [line 59] (covered 9)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 37. deve verificar se um número é divisível por outro [line 60] (killed 4)
+    ~ Suíte de Testes Fraca para 50 Operações Aritméticas 38. deve converter Celsius para Fahrenheit [line 61] (covered 4)
+    ~ Suíte de Testes Fraca para 50 Operações Aritméticas 39. deve converter Fahrenheit para Celsius [line 62] (covered 4)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 40. deve calcular o inverso de um número [line 63] (killed 4)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 41. deve calcular a área de um círculo [line 66] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 42. deve calcular a área de um retângulo [line 67] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 43. deve calcular o perímetro de um retângulo [line 68] (killed 3)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 44. deve verificar se um número é maior que outro [line 69] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 45. deve verificar se um número é menor que outro [line 70] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 46. deve verificar se dois números são iguais [line 71] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 47. deve calcular a mediana de um array ímpar e ordenado [line 72] (killed 1)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 48. deve calcular o dobro de um número [line 73] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 49. deve calcular o triplo de um número [line 74] (killed 2)
+    ✓ Suíte de Testes Fraca para 50 Operações Aritméticas 50. deve calcular a metade de um número [line 75] (killed 2)
+
+[Survived] ConditionalExpression
+src/operacoes.js:19:7
+-     if (n === 0 || n === 1) return 1;
++     if (false) return 1;
+Tests ran:
+    Suíte de Testes Fraca para 50 Operações Aritméticas 8. deve calcular o fatorial de um número maior que 1
+    Valores na fronteira das guardas (zero não é negativo) fatorial(0) retorna 1 em vez de lançar erro [6]
+    Valores na fronteira das guardas (zero não é negativo) fatorial(1) retorna 1
+
+
+[Survived] LogicalOperator
+src/operacoes.js:19:7
+-     if (n === 0 || n === 1) return 1;
++     if (n === 0 && n === 1) return 1;
+Tests ran:
+    Suíte de Testes Fraca para 50 Operações Aritméticas 8. deve calcular o fatorial de um número maior que 1
+    Valores na fronteira das guardas (zero não é negativo) fatorial(0) retorna 1 em vez de lançar erro [6]
+    Valores na fronteira das guardas (zero não é negativo) fatorial(1) retorna 1
+
+
+[Survived] ConditionalExpression
+src/operacoes.js:19:7
+-     if (n === 0 || n === 1) return 1;
++     if (false || n === 1) return 1;
+Tests ran:
+    Suíte de Testes Fraca para 50 Operações Aritméticas 8. deve calcular o fatorial de um número maior que 1
+    Valores na fronteira das guardas (zero não é negativo) fatorial(0) retorna 1 em vez de lançar erro [6]
+    Valores na fronteira das guardas (zero não é negativo) fatorial(1) retorna 1
+
+
+[Survived] ConditionalExpression
+src/operacoes.js:19:18
+-     if (n === 0 || n === 1) return 1;
++     if (n === 0 || false) return 1;
+Tests ran:
+    Suíte de Testes Fraca para 50 Operações Aritméticas 8. deve calcular o fatorial de um número maior que 1
+    Valores na fronteira das guardas (zero não é negativo) fatorial(1) retorna 1
+
+
+[Survived] ConditionalExpression
+src/operacoes.js:84:7
+-     if (numeros.length === 0) return 1;
++     if (false) return 1;
+Tests ran:
+    Suíte de Testes Fraca para 50 Operações Aritméticas 35. deve calcular o produto de um array
+    Arrays vazios com valor de retorno definido produtoArray de array vazio retorna o elemento neutro 1
+
+
+Ran 2.53 tests per mutant on average.
+--------------|------------------|----------|-----------|------------|----------|----------|
+              | % Mutation score |          |           |            |          |          |
+File          |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+--------------|--------|---------|----------|-----------|------------|----------|----------|
+All files     |  97.65 |   97.65 |      205 |         3 |          5 |        0 |        0 |
+ operacoes.js |  97.65 |   97.65 |      205 |         3 |          5 |        0 |        0 |
+--------------|--------|---------|----------|-----------|------------|----------|----------|
+18:43:47 (25620) INFO JsonReporter Your report can be found at: file:///C:/Users/jardi/OneDrive/FACULDADE/operacoes-mutante-PUC/reports/mutation/mutation.json
+18:43:47 (25620) INFO HtmlReporter Your report can be found at: file:///C:/Users/jardi/OneDrive/FACULDADE/operacoes-mutante-PUC/reports/mutation/mutation.html
+18:43:47 (25620) INFO MutationTestExecutor Done in 25 seconds.

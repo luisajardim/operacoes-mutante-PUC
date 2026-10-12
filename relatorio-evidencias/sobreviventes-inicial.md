@@ -9,8 +9,8 @@
 | 5 | Survived | 18:7 | ConditionalExpression | `n < 0` | `false` |
 | 6 | Survived | 18:7 | EqualityOperator | `n < 0` | `n <= 0` |
 | 7 | NoCoverage | 18:30 | StringLiteral | `'Fatorial não é definido para números negativos.'` | `""` |
-| 8 | Survived | 19:7 | LogicalOperator | `n === 0 || n === 1` | `n === 0 && n === 1` |
-| 9 | Survived | 19:7 | ConditionalExpression | `n === 0 || n === 1` | `false` |
+| 8 | Survived | 19:7 | LogicalOperator | `n === 0 \|\| n === 1` | `n === 0 && n === 1` |
+| 9 | Survived | 19:7 | ConditionalExpression | `n === 0 \|\| n === 1` | `false` |
 | 10 | Survived | 19:7 | ConditionalExpression | `n === 0` | `false` |
 | 11 | Survived | 19:18 | ConditionalExpression | `n === 1` | `false` |
 | 12 | Survived | 25:7 | ConditionalExpression | `numeros.length === 0` | `false` |

@@ -1,0 +1,18 @@
+
+> operacoes-mutante-lab@1.0.0 test
+> jest --coverage
+
+PASS test/operacoes.test.js
+PASS test/operacoes.mutantes.test.js
+--------------|---------|----------|---------|---------|-------------------
+File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------|---------|----------|---------|---------|-------------------
+All files     |     100 |      100 |     100 |     100 |                   
+ operacoes.js |     100 |      100 |     100 |     100 |                   
+--------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 2 passed, 2 total
+Tests:       85 passed, 85 total
+Snapshots:   0 total
+Time:        1.295 s, estimated 11 s
+Ran all test suites.
