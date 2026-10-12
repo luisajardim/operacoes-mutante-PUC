@@ -12,6 +12,7 @@ Arquivos de evidência nesta pasta:
 | `mutation-final/mutation.html` | Relatório HTML da execução final |
 | `sobreviventes-inicial.md` | Lista dos 56 mutantes não detectados na primeira execução |
 | `screenshots/` | Capturas dos relatórios HTML (inicial e final) |
+| `relatorio-teste-mutacao.pdf` | **Relatório final de entrega**, em PDF |
 
 ---
 
